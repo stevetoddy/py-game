@@ -11,20 +11,3 @@ class Bag:
 
     def add(self, item):
         self.add = self.bag.append(item)
-    # def __init__(self, items):
-    #     self.items = items 
-
-
-
-# class Items:
-#     def __inti__(self, weapon, clue):
-#         self.weapon = weapon
-#         self.clue = clue
-
-
-    # def add(self, weapon, clue):
-    #     self.weapon += weapon
-    #     self.clue += clue
-
-
-    

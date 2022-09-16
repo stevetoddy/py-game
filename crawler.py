@@ -6,10 +6,10 @@ class Character:
         self.turn_tracker = 0
         self.gibberish = 0
         self.bag = []
+        self.win = False
 
     def add_item(self, item):
         self.item = self.bag.append(item)
-
 
     def dead_end(self):
         x = random.randint(1,101)

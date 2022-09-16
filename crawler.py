@@ -1,13 +1,14 @@
 import random
 
-
 class Character:
-    def __init__(self, name, health = 3, attack = 1):
+    def __init__(self, name):
         self.name = name
-        self.health = health
-        self.attack = attack
         self.turn_tracker = 0
         self.gibberish = 0
+        self.bag = []
+
+    def add_item(self, item):
+        self.item = self.bag.append(item)
 
 
     def dead_end(self):
@@ -30,7 +31,7 @@ class Character:
             return "** AGH! This door is just painted on! Beautiful brushwork though. **"
         elif x >= 95:
             self.turn_tracker += 1        
-            return "** This door won't budge.. but wait, there's a clue tacked to the door: \"The Shop keeper is very generous if you're polite! Thank you for listening\" **"
+            return "** This door won't budge.. but wait, there's a clue tacked to the door: \"The Item Merchant is very generous if you're polite! Thank you for listening\" **"
 
     def make_sense(self):
         x = random.randint(1,101)
@@ -54,9 +55,3 @@ class Character:
             self.gibberish += 1        
             return "** If you don't start making sense, I will be forced to have you institutionalised! **"
     
-
-class Bag:
-    bag = []
-
-    def add_item(self, item):
-        self.item = self.bag.append(item)

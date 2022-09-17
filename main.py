@@ -17,8 +17,6 @@ player = crawler.Character(name)
 print(f"\nWelcome {player.name}!\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
 print("Let's begin!")
 
-time.sleep(2)
-
 crawler.TextPause.enter_continue()
 
 # FIRST ROOM
@@ -47,16 +45,16 @@ while True:
         continue
 
 print(f"Well done {player.name}! It only took you {player.turn_tracker} (sensible) guesses to find the right door!")
-time.sleep(4)
+
 if player.gibberish > 0:
     print(f"\nI won't make a big deal of the {player.gibberish} nonsensical statements you uttered, but next time keep them to yourself please.")
-time.sleep(4)
+
 
 # SECOND ROOM
 print(f"\nOK then, that was pretty easy right {player.name}? Well this next room is even easier! \nAll you have to do is get an item from the Item Merchant over there, go and see what he has!\n")
-time.sleep(4)
+
 print(f"You trundle over to the Item Merchant and greet them \n'Hello Item Merchant! I am {player.name}, guesser of doors and future item haver!'\n")
-time.sleep(4)
+
 print(f"Hello {player.name}, that is an odd way to introduce yourself. I am the Item Merchant and as you might have guessed, I have items. You may pick one to take with you on your adventures\n")
 while True:
     try:    
@@ -105,17 +103,14 @@ while True:
         print(player.make_sense(),"\n-- Please choose between 'y' for Yes or 'n' for NO\n")
         continue
 
-time.sleep(4)
-
 print("Suddenly, you find yourself falling through the air, the ground rushing towards you!\nYou hit the ground with a thud.\n")
-time.sleep(3)
 
-final_roll = 1
-# final_roll = random.randint(1,3)
+final_roll = random.randint(1,3)
 luck = 42
 
 # LOCKED DOOR
 if final_roll == 1:
+    player.ending = "LOCKED DOOR"
     print("You find yourself in a small room, with nothing but a locked door in front of you. This seems to be a bit of a theme here...\n")
     time.sleep(2)
     if 'key' in player.bag:
@@ -130,11 +125,13 @@ if final_roll == 1:
         if random.randint(1,42) == luck:
             print("Through sheer determination and grit, you have willed the locked door open.. How? You are not sure..")
             player.win = True
+            player.lucky = True
         else:
             print("The door is locked tight and the portal is no where to be seen. Better get comfortable, it seems this little room will be you home for a while.")
 
 # CANNIBALS
 elif final_roll == 2:
+    player.ending = "CANNIBALS"
     print("You raise you head to find yourself in a dark corner of a crowded room. Crowded with CANNIBALS! \n")
     time.sleep(2)
     if 'disguise' in player.bag:
@@ -149,11 +146,13 @@ elif final_roll == 2:
         if random.randint(1,42) == luck:
             print("The cannibals seem distracted for some reason and you can slip past.. What has distracted them? You are not sure..")
             player.win = True
+            player.lucky = True
         else:
             print("The cannibals spot you immediately and start to salivating like Pavlov's dogs. As an avid cook, you can't help but be happy that you'll make one last crowd pleasing meal!")
 
 # CERBERUS
 else:
+    player.ending = "CERBERUS"
     print("A mighty roar rips through the air, and before you can gather think, you find yourself face to face to face to face with the 3 headed beast of legend, Cerberus!\n")
     time.sleep(2)
     if 'sausage' in player.bag:
@@ -169,28 +168,15 @@ else:
         if random.randint(1,42) == luck:
             print("Cerberus notices your kind eyes and becomes enthralled with you. You are able to walk past it without issue. You win!\n")
             player.win = True
+            player.lucky = True
         else:
             print("Without a moments pause, the closest of Cerberus's terrible heads snaps towards in your direction and takes a mouthful of you.\n")
             print("Unfortunately it included some important parts that make up 'you', and you fall over dead.")
 
 # CREDITS
+player.win_lose()
+
 if player.win == True:
-    print(f"Well done {player.name}! You made it through unscathed!\n")
+    player.credits_win()
 else:
-    print(f"Bad luck {player.name}, you have died miserably while trying to escape. Better luck next time.\n")
-
-# FIRST ROOM STATEMENT
-print(f"It took you {player.turn_tracker} guesses to get through the first room.\n")
-print(f"You made {player.gibberish} unintelligible remarks along your journey")
-
-# BAG STATEMENT
-if len(player.bag) > 1:
-    print("You found all the items in the game! It pays to be polite!")
-else:
-    print(f"You ended up with a {(player.bag)} in your bag.")
-
-# GOLD STAR STATEMENT
-if 'Gold Star: Manners' in player.bag:
-    print("You found the secret Gold Star for Manners!!") 
-else: 
-    print("You didn't find the secret Gold Star for Manners."  )
+    player.credits_lose()

@@ -1,19 +1,37 @@
-from lib2to3.pgen2.token import COLONEQUAL
+import art
+from rich import print
 import crawler
 import random
 import time
 
 
-name = (input(f'Hello Contestant! What is your name? '))
+# HEADING 
+art.tprint("ESCAPE  ROOM","tarty1-large")
+print(f"[bold magenta]By Stevan Todorovic[/bold magenta]")
+
+crawler.TextPause.enter_continue()
+
+#NAME INPUT
+name = (input(f"Hello Contestant! Just before we start, what is your name? "))
 player = crawler.Character(name)
-print(f'Welcome {player.name}, let begin!\nYou enter the first room.')
+print(f"\nWelcome {player.name}!\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
+print("Let's begin!")
+
+time.sleep(2)
+
+crawler.TextPause.enter_continue()
 
 # FIRST ROOM
+print("You enter the first room to find yourself confront with 20 numbered doors, they all look the same.")
+print("A notice on the wall advises you, [yellow]'This room is EASY, just find the unlocked door to proceed!'[/yellow]")
+
+crawler.TextPause.enter_continue()
+
 door_number = random.randint(1,20)
 while True:
     print(door_number)
     try:
-        ans = int(input('There are 20 doors with the numbers 1 to 20 painted above each. Which door do you want to go through? Pick a number between 1 and 20 to choose. '))
+        ans = int(input("Which door do you want to try? Pick a number between 1 and 20 to choose. "))
         if ans == door_number:
             player.turn_tracker += 1
             print("\nYou push against the door and it slowly gives way, you have found the correct door!\n")
@@ -22,7 +40,7 @@ while True:
             print(player.dead_end(),'\n')
             continue
         else:
-            print(player.make_sense(),'\n-- Enter a number between 1 and 20\n')
+            print(player.make_sense(),"\n-- Enter a number between 1 and 20\n")
             continue
     except ValueError:
         print(player.make_sense(),"\n-- Enter a number between 1 and 20\n")

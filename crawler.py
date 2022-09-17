@@ -1,4 +1,6 @@
 import random
+from rich import print
+
 
 class Character:
     def __init__(self, name):
@@ -36,22 +38,26 @@ class Character:
     def make_sense(self):
         x = random.randint(1,101)
 
-        if x <= 40:
+        if x <= 60:
             self.gibberish += 1
             return "** That doesn't make sense.. **"
-        elif x > 40 and x <= 50:
-            self.gibberish += 1
-            return "** Please stop with the gibberish! **"
-        elif x > 50 and x <= 60:
-            self.gibberish += 1
-            return "** You must think before you speak **"
         elif x > 60 and x <= 70:
             self.gibberish += 1
+            return "** Please stop with the gibberish! **"
+        elif x > 70 and x <= 80:
+            self.gibberish += 1
+            return "** You must think before you speak **"
+        elif x > 80 and x <= 90:
+            self.gibberish += 1
             return "** It seems like you know what you're doing, but this doesn't make sense.. **"
-        elif x > 70 and x < 95:
+        elif x > 90 and x < 95:
             self.gibberish += 1        
             return "** Please consider using your head.. **"
         elif x >= 95:
             self.gibberish += 1        
             return "** If you don't start making sense, I will be forced to have you institutionalised! **"
-    
+  
+class TextPause:
+    def enter_continue():
+        print("\n\n[bold red]{PRESS ANY KEY TO CONTINUE}[/bold red]\n\n")
+        input()

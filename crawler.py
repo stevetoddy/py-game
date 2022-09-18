@@ -21,25 +21,27 @@ class Character:
     def dead_end(self):
         """PICKING WRONG DOOR STATEMENT"""
         pick_door = random.randint(1,101)
-        
         if pick_door <= 20:
             self.turn_tracker += 1
             return "** [blue]This door won't open[/blue] **"
-        elif pick_door > 20 and pick_door <= 40:
+        if 20 < pick_door <= 40:
             self.turn_tracker += 1
             return "** [blue]This door is locked, you give it a knock... No answer.[/blue] **"
-        elif pick_door > 40 and pick_door <= 60:
+        if 40 < pick_door <= 60:
             self.turn_tracker += 1
             return "** [blue]This door is locked tight[/blue] **"
-        elif pick_door > 60 and pick_door <= 80:
+        if 60 < pick_door <= 80:
             self.turn_tracker += 1
             return "** [blue]This door won't budge[/blue] **"
-        elif pick_door > 80 and pick_door < 95:
+        if 80 < pick_door < 95:
             self.turn_tracker += 1
-            return "** [blue]AGH! This door is just painted on! Beautiful brushwork though.[/blue] **"
-        elif pick_door >= 95:
+            return "** [blue]AGH! This door is just painted on! Beautiful brushwork\
+ though.[/blue] **"
+        if pick_door >= 95:
             self.turn_tracker += 1
-            return "** [blue]This door won't budge.. but wait, there's a clue tacked to the door:[/blue] \"The Item Merchant is very generous if you're polite! Thank you for listening\" **"
+            return "** [blue]This door won't budge.. but wait, there's a clue\
+ tacked to the door:[/blue] \"The Item Merchant is very generous if you're\
+ polite! Thank you for listening\" **"
 
     def make_sense(self):
         """USER ENTERING A VERY WRONG STATEMENT"""
@@ -48,45 +50,51 @@ class Character:
         if wrong_statement <= 60:
             self.gibberish += 1
             return "** [yellow]That doesn't make sense..[/yellow] **"
-        elif wrong_statement > 60 and wrong_statement <= 70:
+        if 60 < wrong_statement <= 70:
             self.gibberish += 1
             return "** [yellow]Please stop with the gibberish![/yellow] **"
-        elif wrong_statement > 70 and wrong_statement <= 80:
+        if 70 < wrong_statement <= 80:
             self.gibberish += 1
             return "** [yellow]You must think before you speak[/yellow] **"
-        elif wrong_statement > 80 and wrong_statement <= 90:
+        if 80 < wrong_statement <= 90:
             self.gibberish += 1
-            return "** [yellow]It seems like you know what you're doing, but this doesn't make sense..[/yellow] **"
-        elif wrong_statement > 90 and wrong_statement < 95:
+            return "** [yellow]It seems like you know what you're doing,\
+ but this doesn't make sense..[/yellow] **"
+        if 90 < wrong_statement < 95:
             self.gibberish += 1        
             return "** [yellow]Please consider using your head..[/yellow] **"
-        elif wrong_statement >= 95:
+        if wrong_statement >= 95:
             self.gibberish += 1        
-            return "** [yellow]If you don't start making sense, I will be forced to have you institutionalised![/yellow] **"
+            return "** [yellow]If you don't start making sense, I will\
+ be forced to have you institutionalised![/yellow] **"
 
     def win_lose(self):
         """WIN/LOSE STATEMENTS WITH PICTURES"""
         if self.win is True:
             art.tprint("CONGRATULATIONS","tarty1-large")
             art.tprint(f"{self.name}","tarty1-large")
-            print("[bold yellow]You made it through unscathed![/bold yellow]\n")
+            print("\n[bold yellow]You made it through unscathed![/bold yellow]\n")
         else:
             art.tprint(f"BAD LUCK {self.name}","smpoison-large")
             if self.ending == "LOCKED DOOR":
-                print("\n[red]You have died miserably staring at the locked door. Better luck next time.[/red]\n")
+                print("\n[red]You have died miserably staring at the locked door.\
+ Better luck next time.[/red]\n")
             elif self.ending == "CANNIBALS":
                 print("\n[red]You have died a delicious death! Better luck next time.[/red]\n")
             elif self.ending == "CERBERUS":
-                print("\n[red]You now lack the required body parts to keep living! Better luck next time.[/red]\n")
+                print("\n[red]You now lack the required body parts to keep living!\
+ Better luck next time.[/red]\n")
 
     def credits_win(self):
         """WIN STATE"""
         print("\n")
-        print("*************************************************************************************************************************")
+        print("***********************************************************************\
+**************************************************")
         print("          _______________ ")
         print("         |@@@@|     |####| ")
         print("         |@@@@|     |####|                                  ")
-        print(f"         |@@@@|     |####|      It took you {self.turn_tracker} guesses to get through the first room")
+        print(f"         |@@@@|     |####|      It took you {self.turn_tracker} guesses\
+ to get through the first room")
         print("         \@@@@|     |####/                                       ")
         print("          \@@@|     |###/       ITEMS COLLECTED                                 ")
         print(f"           `@@|_____|##'        {' - '.join(self.bag)} ")
@@ -97,21 +105,25 @@ class Character:
         print("         : ~    YOU    ~ :      ENDING                                 ")
         print(f"         : ~    WON    ~ :      - {self.ending}")
         print("          :  *       *  : ")
-        print(f"           `.  * * *  .'        You made {self.gibberish} unintelligible remarks along your journey")
+        print(f"           `.  * * *  .'        You made {self.gibberish} unintelligible\
+ remarks along your journey")
         print("             `-.....-' ")
         print("\n")
-        print("*************************************************************************************************************************")
+        print("************************************************************************\
+*************************************************")
         print("\n")
         print("\n")
 
     def credits_lose(self):
         """LOSE STATE"""
         print("\n")
-        print("*************************************************************************************************************************")
+        print("*************************************************************************\
+************************************************")
         print("        _                   _ ")
         print("      _( )                 ( )_ ")
         print("     (_, |      __ __      | ,_) ")
-        print(f"         \'\    /  ^  \    /'/        It took you {self.turn_tracker} guesses to get through the first room")   
+        print(f"         \'\    /  ^  \    /'/        It took you {self.turn_tracker}\
+ guesses to get through the first room")
         print("          '\'\,/\      \,/'/' ")
         print("           '\| []   [] |/'           ITEMS FOUND")
         print(f"             (_  /^\  _)             {' - '.join(self.bag)} ")
@@ -119,10 +131,12 @@ class Character:
         print("               /HHHHH\               ENDING")
         print(f"             /'/(^^^)\'\              - {self.ending}")
         print("         _,/'/'  ^^^  '\'\,_ ")
-        print(f"        (_, |           | ,_)        You made {self.gibberish} unintelligible remarks along your journey")
+        print(f"        (_, |           | ,_)        You made {self.gibberish}\
+ unintelligible remarks along your journey")
         print("          (_)           (_) ")
         print("\n")
-        print("*************************************************************************************************************************")
+        print("**************************************************************************\
+***********************************************")
         print("\n")
         print("\n")
 

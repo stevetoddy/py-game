@@ -1,10 +1,10 @@
-
 import random
 import art
 from rich import print
 
 
 class Character:
+    """PLAYER CLASS"""
     def __init__(self, name):
         self.name = name
         self.turn_tracker = 0
@@ -15,106 +15,72 @@ class Character:
         self.lucky = False
 
     def add_item(self, item):
+        """ADD ITEMS TO PLAYER BAG"""
         self.item = self.bag.append(item)
 
     def dead_end(self):
-        x = random.randint(1,101)
+        """PICKING WRONG DOOR STATEMENT"""
+        pick_door = random.randint(1,101)
         
-        if x <= 20:
+        if pick_door <= 20:
             self.turn_tracker += 1
-            return "** This door won't open **"
-        elif x > 20 and x <= 40:
+            return "** [blue]This door won't open[/blue] **"
+        elif pick_door > 20 and pick_door <= 40:
             self.turn_tracker += 1
-            return "** This door is locked, you give it a knock... No answer. **"
-        elif x > 40 and x <= 60:
+            return "** [blue]This door is locked, you give it a knock... No answer.[/blue] **"
+        elif pick_door > 40 and pick_door <= 60:
             self.turn_tracker += 1
-            return "** This door is locked tight **"
-        elif x > 60 and x <= 80:
+            return "** [blue]This door is locked tight[/blue] **"
+        elif pick_door > 60 and pick_door <= 80:
             self.turn_tracker += 1
-            return "** This door won't budge **"
-        elif x > 80 and x < 95:
-            self.turn_tracker += 1        
-            return "** AGH! This door is just painted on! Beautiful brushwork though. **"
-        elif x >= 95:
-            self.turn_tracker += 1        
-            return "** This door won't budge.. but wait, there's a clue tacked to the door: \"The Item Merchant is very generous if you're polite! Thank you for listening\" **"
+            return "** [blue]This door won't budge[/blue] **"
+        elif pick_door > 80 and pick_door < 95:
+            self.turn_tracker += 1
+            return "** [blue]AGH! This door is just painted on! Beautiful brushwork though.[/blue] **"
+        elif pick_door >= 95:
+            self.turn_tracker += 1
+            return "** [blue]This door won't budge.. but wait, there's a clue tacked to the door:[/blue] \"The Item Merchant is very generous if you're polite! Thank you for listening\" **"
 
     def make_sense(self):
-        x = random.randint(1,101)
+        """USER ENTERING A VERY WRONG STATEMENT"""
+        wrong_statement = random.randint(1,100)
 
-        if x <= 60:
+        if wrong_statement <= 60:
             self.gibberish += 1
-            return "** That doesn't make sense.. **"
-        elif x > 60 and x <= 70:
+            return "** [yellow]That doesn't make sense..[/yellow] **"
+        elif wrong_statement > 60 and wrong_statement <= 70:
             self.gibberish += 1
-            return "** Please stop with the gibberish! **"
-        elif x > 70 and x <= 80:
+            return "** [yellow]Please stop with the gibberish![/yellow] **"
+        elif wrong_statement > 70 and wrong_statement <= 80:
             self.gibberish += 1
-            return "** You must think before you speak **"
-        elif x > 80 and x <= 90:
+            return "** [yellow]You must think before you speak[/yellow] **"
+        elif wrong_statement > 80 and wrong_statement <= 90:
             self.gibberish += 1
-            return "** It seems like you know what you're doing, but this doesn't make sense.. **"
-        elif x > 90 and x < 95:
+            return "** [yellow]It seems like you know what you're doing, but this doesn't make sense..[/yellow] **"
+        elif wrong_statement > 90 and wrong_statement < 95:
             self.gibberish += 1        
-            return "** Please consider using your head.. **"
-        elif x >= 95:
+            return "** [yellow]Please consider using your head..[/yellow] **"
+        elif wrong_statement >= 95:
             self.gibberish += 1        
-            return "** If you don't start making sense, I will be forced to have you institutionalised! **"
+            return "** [yellow]If you don't start making sense, I will be forced to have you institutionalised![/yellow] **"
 
     def win_lose(self):
-        if self.win == True:
+        """WIN/LOSE STATEMENTS WITH PICTURES"""
+        if self.win is True:
             art.tprint("CONGRATULATIONS","tarty1-large")
             art.tprint(f"{self.name}","tarty1-large")
-            print(f"You made it {self.name}! You made it through unscathed!\n")
+            print("[bold yellow]You made it through unscathed![/bold yellow]\n")
         else:
-            art.tprint("BAD LUCK","smpoison-large")
-            art.tprint(f"{self.name}","smpoison-large")
+            art.tprint(f"BAD LUCK {self.name}","smpoison-large")
             if self.ending == "LOCKED DOOR":
-                print("              _______________")
-                print("              |  ___________  |")
-                print("              | |  _ _ _ _  | |")      
-                print("              | | | | | | | | |")
-                print("              | | |-+-+-+-| | |")
-                print("              | | |-+-+-+-| | |")      
-                print("              | | |_|_|_|_| | |")
-                print("              | |           | |")
-                print("              | |         ()| |")      
-                print("              | |         ||| |")
-                print("              | |         ()| |")
-                print("              | |           | |")      
-                print("              | |           | |")
-                print("              | |           | |")
-                print("              |_|___________|_|")
                 print("\n[red]You have died miserably staring at the locked door. Better luck next time.[/red]\n")
             elif self.ending == "CANNIBALS":
-                print("                      ( ")
-                print("                       )  ) ")
-                print("                   ______(____")
-                print("                  (___________) ")
-                print("                   /         \ ")
-                print("                  /           \ ")
-                print("                 |             | ")
-                print("             ____\             /____")
-                print("            ()____'.__     __.'____() ")
-                print("                 .'` .'```'. `-. ")
-                print("                ().'`       `'.() ")
                 print("\n[red]You have died a delicious death! Better luck next time.[/red]\n")
             elif self.ending == "CERBERUS":
-                print("                        /\_/\____, ")
-                print("              ,___/\_/\ \  ~     / ")
-                print("              \     ~  \ )   XXX ")
-                print("                XXX     /    /\_/\___, ")
-                print("                   \   /====/   ~    / ")
-                print("                    )=/     \    XXX ")
-                print("                   _|    / \ \_/ ")
-                print("                ,-/   _  \_/   \ ")
-                print("               / (   /____,__|  )")
-                print("              (  |_ (    )  \) _|")
-                print("             _/ _)   \   \__/   (_")
-                print("            (,-(,(,(,/      \,),),)")
                 print("\n[red]You now lack the required body parts to keep living! Better luck next time.[/red]\n")
 
     def credits_win(self):
+        """WIN STATE"""
         print("\n")
         print("*************************************************************************************************************************")
         print("          _______________ ")
@@ -122,7 +88,7 @@ class Character:
         print("         |@@@@|     |####|                                  ")
         print(f"         |@@@@|     |####|      It took you {self.turn_tracker} guesses to get through the first room")
         print("         \@@@@|     |####/                                       ")
-        print("          \@@@|     |###/       ITEMS FOUND                                 ")
+        print("          \@@@|     |###/       ITEMS COLLECTED                                 ")
         print(f"           `@@|_____|##'        {' - '.join(self.bag)} ")
         print("                (O)                                              ")
         print("             .-'''''-.          WAS IT LUCK?                                ")
@@ -131,7 +97,7 @@ class Character:
         print("         : ~    YOU    ~ :      ENDING                                 ")
         print(f"         : ~    WON    ~ :      - {self.ending}")
         print("          :  *       *  : ")
-        print(f"           `.  * * *  .'         You made {self.gibberish} unintelligible remarks along your journey")
+        print(f"           `.  * * *  .'        You made {self.gibberish} unintelligible remarks along your journey")
         print("             `-.....-' ")
         print("\n")
         print("*************************************************************************************************************************")
@@ -139,6 +105,7 @@ class Character:
         print("\n")
 
     def credits_lose(self):
+        """LOSE STATE"""
         print("\n")
         print("*************************************************************************************************************************")
         print("        _                   _ ")
@@ -161,6 +128,9 @@ class Character:
 
 
 class TextPause:
+    """PRESS ENTER TO CONTINUE STORY BREAK"""
+    @staticmethod
     def enter_continue():
+        """PRESS ENTER TO CONTINUE STORY BREAK"""
         print("\n\n[bold red]{PRESS ENTER TO CONTINUE}[/bold red]\n\n")
         input()

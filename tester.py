@@ -87,9 +87,13 @@
 # print(f"        (_, |           | ,_)        You made {self.gibberish} unintelligible remarks along your journey")
 # print("          (_)           (_) ")
 
-import crawler
+# import crawler
 
-player = crawler.Character(name="Steve")
+# player = crawler.Character(name="Steve")
 
-print(player.credits_lose())
-print(player.credits_win())
+# print(player.credits_lose())
+# print(player.credits_win())
+import art
+
+art.tprint("BAD LUCK Steve","smpoison-large")
+art.tprint("steve","rnd-small")

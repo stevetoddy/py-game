@@ -157,7 +157,8 @@ print("You hit the ground with a thud.\n")
 crawler.TextPause.enter_continue()
 
 # FINAL ROOM DECIDER
-final_roll = random.randint(1,3)
+final_roll = 1
+# random.randint(1,3)
 LUCK = 42
 # LOCKED DOOR
 if final_roll == 1:
@@ -182,29 +183,38 @@ if final_roll == 1:
     crawler.TextPause.enter_continue()
     if 'key' in player.bag:
         print("You remember the key in your bag!")
+   
         crawler.TextPause.enter_continue()
+
         if random.randint(41,42) == LUCK:
             print("You're key unlocks the door! You win!")
             player.win = True
+
             crawler.TextPause.enter_continue()
+
         else:
             print("The key breaks off in the door and the lock remains firmly in place.\
- How unfortunate to be so unlucky in such a place!\n")
+How unfortunate to be so unlucky in such a place!\n")
             time.sleep(1.5)
             print("The door is locked tight and the portal is no where to be seen.\
- Better get comfortable, it seems this little room will be you home for a while.\n")
+Better get comfortable, it seems this little room will be you home for a while.\n")
             print("[bold red]HOW UNLUCKY![/bold red]")
+
             crawler.TextPause.enter_continue()
+
     else:
         if random.randint(1,42) == LUCK:
             print("Through sheer determination and grit, you have willed the locked\
  door open.. How? You are not sure..")
             print("[bold green]HOW LUCKY![/bold green]")
-            crawler.TextPause.enter_continue()
             player.win = True
+
+            crawler.TextPause.enter_continue()
+
         else:
             print("The door is locked tight and the portal is no where to be seen.\
  Better get comfortable, it seems this little room will be you home for a while.")
+
             crawler.TextPause.enter_continue()
 
 # CANNIBALS
@@ -224,20 +234,27 @@ elif final_roll == 2:
     print("            ()____'.__     __.'____() ")
     print("                 .'` .'```'. `-. ")
     print("                ().'`       `'.() ")
+
     crawler.TextPause.enter_continue()
+
     if 'disguise' in player.bag:
         print("You remember the disguise in your bag!")
+
         crawler.TextPause.enter_continue()
+
         if random.randint(41,42) == LUCK:
             print("You are able to slip past the cannibals and make it outside! You win!")
             player.win = True
+
             crawler.TextPause.enter_continue()
+
         else:
             print("The disguise doesn't work and you are caught! How unfortunate\
  to be so unlucky in such a place!\n")
             print("The cannibals throw you in a pot and start talking excitedly\
  about herbs and spices.\n")
             print("[bold red]HOW UNLUCKY![/bold red]")
+
             crawler.TextPause.enter_continue()
     else:
         if random.randint(1,42) == LUCK:
@@ -245,11 +262,15 @@ elif final_roll == 2:
  past.. What has distracted them? You are not sure..")
             print("[bold green]HOW LUCKY![/bold green]")
             player.win = True
+
             crawler.TextPause.enter_continue()
+
         else:
             print("The cannibals spot you immediately and start to salivating like\
  Pavlov's dogs. As an avid cook, you can't help but be happy that you will make one last meal!")
+
             crawler.TextPause.enter_continue()
+
 # CERBERUS
 else:
     player.ending = "CERBERUS"
@@ -267,39 +288,51 @@ else:
     print("              (  |_ (    )  \) _|")
     print("             _/ _)   \   \__/   (_")
     print("            (,-(,(,(,/      \,),),)")
+
     crawler.TextPause.enter_continue()
+
     if 'sausage' in player.bag:
         print("You remember the sausage in your bag!")
+
         crawler.TextPause.enter_continue()
+
         if random.randint(41,42) == LUCK:
             print("You gingerly offer the sausage to the closest head. As you hand\
  trembles, the grotesque monster sniffs the sausage and lets out a gleeful squeal!\n")
             print("Turns out Cerberus loves snags and is now your friend. You win!\n")
             player.win = True
+
             crawler.TextPause.enter_continue()
+
         else:
             print("You gingerly offer the sausage to the closest head. As you hand\
  trembles, the grotesque monster sniffs the sausage and lets out an angry growl.\n")
             print("You had not noticed but it turns out it was a lamb and rosemary\
  sausage, and Cerberus hates lamb even more than he hates rosemary. You are eaten instead.\n")
             print("[bold red]HOW UNLUCKY![/bold red]")
+
             crawler.TextPause.enter_continue()
+
     else:
         if random.randint(1,42) == LUCK:
             print("Cerberus notices your kind eyes and becomes enthralled with\
  you. You are able to walk past it without issue. You win!\n")
             print("[bold green]HOW LUCKY![/bold green]")
             player.win = True
+
             crawler.TextPause.enter_continue()
+
         else:
             print("Without a moments pause, the closest of Cerberus\'s terrible\
  heads snaps in your direction and takes a mouthful of you.\n")
             print("Unfortunately it included some important parts that make\
  up 'you', and you fall over dead.")
+
             crawler.TextPause.enter_continue()
 
 # CREDITS
 player.win_lose()
+
 crawler.TextPause.enter_continue()
 
 if "Gold Star: Manners" in player.bag:

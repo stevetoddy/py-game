@@ -133,8 +133,8 @@ print(player.bag)
 # THIRD ROOM
 print("You leave the merchant and enter a room with a portal hanging in the air.\
  A sign pointing in its direction says 'Step through the portal to find the exit!'\n")
-enter = input("Do you enter the portal (y/n)? ").lower().strip()
 while True:
+    enter = input("Do you enter the portal (y/n)? ").lower().strip()
     try:
         if enter == 'y':
             print("You step through the portal.... \n")
@@ -143,6 +143,9 @@ while True:
             print("You take one look at this dodgy portal business and decide this is not for you.\
  you turn to leave but slip on a loose pebble, stumbling backwards.... \n")
             break
+        if enter == "":
+            print(player.make_sense())
+            continue
     except ValueError:
         print(player.make_sense(),"\n-- Please choose between 'y' for Yes or 'n' for NO\n")
         continue
@@ -324,4 +327,3 @@ if player.win is True:
     player.credits_win()
 else:
     player.credits_lose()
-    

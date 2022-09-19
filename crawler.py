@@ -1,6 +1,8 @@
 import random
 import art
 from rich import print
+import time
+import clearing
 
 
 class Character:
@@ -12,7 +14,7 @@ class Character:
         self.bag = []
         self.win = False
         self.ending = " "
-        self.lucky = False
+        self.gold_star = False
 
     def add_item(self, item):
         """ADD ITEMS TO PLAYER BAG"""
@@ -44,8 +46,8 @@ class Character:
  polite! Thank you for listening\" **"
 
     def make_sense(self):
-        """USER ENTERING A VERY WRONG STATEMENT"""
-        wrong_statement = random.randint(1,100)
+        """USER ENTERING A WRONG VALUE OR TYPE STATEMENT"""
+        wrong_statement = random.randint(1,101)
 
         if wrong_statement <= 60:
             self.gibberish += 1
@@ -99,8 +101,8 @@ class Character:
         print("          \@@@|     |###/       ITEMS COLLECTED                                 ")
         print(f"           `@@|_____|##'        {' - '.join(self.bag)} ")
         print("                (O)                                              ")
-        print("             .-'''''-.          WAS IT LUCK?                                ")
-        print(f"           .'  * * *  `.        - {self.lucky}                                 ")
+        print("             .-'''''-.          GOLD STAR FOUND?                                ")
+        print(f"           .'  * * *  `.        - {self.gold_star}                                 ")
         print("          :  *       *  :                                        ")
         print("         : ~    YOU    ~ :      ENDING                                 ")
         print(f"         : ~    WON    ~ :      - {self.ending}")
@@ -120,20 +122,20 @@ class Character:
         print("*************************************************************************\
 ************************************************")
         print("        _                   _ ")
-        print("      _( )                 ( )_ ")
-        print("     (_, |      __ __      | ,_) ")
-        print(f"         \'\    /  ^  \    /'/        It took you {self.turn_tracker}\
+        print(f"      _( )                 ( )_        It took you {self.turn_tracker}\
  guesses to get through the first room")
-        print("          '\'\,/\      \,/'/' ")
-        print("           '\| []   [] |/'           ITEMS FOUND")
-        print(f"             (_  /^\  _)             {' - '.join(self.bag)} ")
-        print("               \  ~  / ")
-        print("               /HHHHH\               ENDING")
-        print(f"             /'/(^^^)\'\              - {self.ending}")
-        print("         _,/'/'  ^^^  '\'\,_ ")
-        print(f"        (_, |           | ,_)        You made {self.gibberish}\
+        print("     (_, |      __ __      | ,_) ")
+        print("         \'\    /  ^  \    /'/         ITEMS FOUND")
+        print(f"          '\'\,/\      \,/'/'          {' - '.join(self.bag)}")
+        print("           '\| []   [] |/'            ")
+        print("             (_  /^\  _)               GOLD STAR FOUND?")
+        print(f"               \  ~  /                 - {self.gold_star}")
+        print("               /HHHHH\               ")
+        print("             /'/(^^^)\'\               ENDING ")
+        print(f"         _,/'/'  ^^^  '\'\,_           - {self.ending}")
+        print("        (_, |           | ,_) ")
+        print(f"          (_)           (_)            You made {self.gibberish}\
  unintelligible remarks along your journey")
-        print("          (_)           (_) ")
         print("\n")
         print("**************************************************************************\
 ***********************************************")
@@ -146,5 +148,7 @@ class TextPause:
     @staticmethod
     def enter_continue():
         """PRESS ENTER TO CONTINUE STORY BREAK"""
+        time.sleep(1.5)
         print("\n\n[bold red]{PRESS ENTER TO CONTINUE}[/bold red]\n\n")
         input()
+        clearing.clear()

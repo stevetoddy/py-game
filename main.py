@@ -1,5 +1,5 @@
 import art
-# from rich import print
+from rich import print
 import crawler
 import random
 import time

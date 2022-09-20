@@ -2,6 +2,7 @@ import random
 from rich import print
 import time
 import clearing
+import art
 
 
 class Character:

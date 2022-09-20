@@ -131,26 +131,25 @@ print("You leave the merchant and enter a room with a portal hanging in the air.
  A sign pointing in its direction says 'Step through the portal to find the exit!'\n")
 while True:
     enter = input("Do you enter the portal (y/n)? ").lower().strip()
-    try:
-        if enter == 'y':
-            print("You step through the portal.... \n")
-            break
-        if enter == 'n':
-            print("You take one look at this dodgy portal business and decide this is not for you.\
- you turn to leave but slip on a loose pebble, stumbling backwards.... \n")
-            break
-        if enter == "":
-            print(player.make_sense())
-            continue
-    except ValueError:
+    if enter == 'y':
+        print("You step through the portal.... \n")
+        break
+    if enter == 'n':
+        print("You take one look at this dodgy portal business and decide this is not for you.\
+ You turn to leave but slip on a loose pebble, stumbling backwards.... \n")
+        break
+    if enter == "":
+        print(player.make_sense())
+        continue
+    else:
         print(player.make_sense(),"\n-- Please choose between 'y' for Yes or 'n' for NO\n")
         continue
 
-time.sleep(2)
+time.sleep(3)
 
 print("Suddenly, you find yourself falling through the air, the ground rushing towards you!\n")
 
-time.sleep(2)
+time.sleep(3)
 
 print("You hit the ground with a thud.\n")
 

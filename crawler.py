@@ -1,6 +1,6 @@
 import random
 import art
-from rich import print
+# from rich import print
 import time
 import clearing
 

@@ -4,6 +4,7 @@ import crawler
 import random
 import time
 import clearing
+from sys import argv
 
 
 clearing.clear()
@@ -15,10 +16,7 @@ print("[bold magenta]By Stevan Todorovic[/bold magenta]")
 crawler.TextPause.enter_continue()
 
 #NAME INPUT
-
-name = argv[1]
-
-if name is None:
+if len(argv) <= 1:
     while True:
         name = (input("Hello Contestant! Just before we start, what is your name? "))
         if name == "":
@@ -29,9 +27,9 @@ if name is None:
             print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
             break
 else: 
+    name = argv[1]
     player = crawler.Character(name)
     print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
-            
 
 print("\n[bold yellow]Let's begin![/bold yellow]")
 

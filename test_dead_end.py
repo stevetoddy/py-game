@@ -27,7 +27,3 @@ class TestBagAdd:
     def test_add_item(self):
         player.add_item("TEST_ITEM")
         assert "TEST_ITEM" in player.bag
-
-# class TestPoliteMerchant:
-#     def test_manners(self):
-        

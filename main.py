@@ -15,15 +15,23 @@ print("[bold magenta]By Stevan Todorovic[/bold magenta]")
 crawler.TextPause.enter_continue()
 
 #NAME INPUT
-while True:
-    name = (input("Hello Contestant! Just before we start, what is your name? "))
-    if name == "":
-        print ("[red]Please enter your name[/red]")
-        continue
-    else: 
-        player = crawler.Character(name)
-        print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
-        break
+
+name = argv[1]
+
+if name is None:
+    while True:
+        name = (input("Hello Contestant! Just before we start, what is your name? "))
+        if name == "":
+            print ("[red]Please enter your name[/red]")
+            continue
+        else: 
+            player = crawler.Character(name)
+            print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
+            break
+else: 
+    player = crawler.Character(name)
+    print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
+            
 
 print("\n[bold yellow]Let's begin![/bold yellow]")
 

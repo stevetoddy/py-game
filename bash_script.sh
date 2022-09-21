@@ -6,5 +6,6 @@ create venv
 
 install required packages
 
-run program
+# Execute App
+python3 main.py $1
 

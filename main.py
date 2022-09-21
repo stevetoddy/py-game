@@ -15,11 +15,17 @@ print("[bold magenta]By Stevan Todorovic[/bold magenta]")
 crawler.TextPause.enter_continue()
 
 #NAME INPUT
-name = (input("Hello Contestant! Just before we start, what is your name? "))
-player = crawler.Character(name)
-print(f"\nWelcome {player.name}!\nYou are about to enter the worlds\
- smallest [bold green]ESCAPE ROOM![/bold green].")
-print("Let's begin!")
+while True:
+    name = (input("Hello Contestant! Just before we start, what is your name? "))
+    if name == "":
+        print ("[red]Please enter your name[/red]")
+        continue
+    else: 
+        player = crawler.Character(name)
+        print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
+        break
+
+print("\n[bold yellow]Let's begin![/bold yellow]")
 
 crawler.TextPause.enter_continue()
 
@@ -39,18 +45,18 @@ while True:
  between 1 and 20 to choose. "))
         if ans == door_number:
             player.turn_tracker += 1
-            print("\nYou push against the door and it slowly gives way,\
- you have found the correct door!\n")
+            print("\n[bold green]You push against the door and it slowly gives way,\
+ you have found the correct door![/bold green]\n")
             time.sleep(1.5)
             break
         elif ans in range(1,21) and ans != door_number:
             print(player.dead_end(),'\n')
             continue
         else:
-            print(player.make_sense(),"\n-- Enter a number between 1 and 20\n")
+            print(player.make_sense(),"\n[red]-- Enter a number between 1 and 20 --[/red]\n")
             continue
     except ValueError:
-        print(player.make_sense(),"\n-- Enter a number between 1 and 20\n")
+        print(player.make_sense(),"\n[red]-- You must pick a NUMBER between 1 and 20 --[/red]\n")
         continue
 
 crawler.TextPause.enter_continue()
@@ -84,59 +90,43 @@ print("'I am the Item Merchant and as you might have guessed, I have items.\
 crawler.TextPause.enter_continue()
 
 while True:
-    try:
-        ans = str(input("Please choose between a 'sausage', a 'key' or\
- a 'disguise'? ").lower().strip())
-        if ans == 'sausage':
-            print(f"\n'I had a feeling you would pick the sausage {player.name}, you have a hungry\
- look about you. Please, before throwing it down your gullet, maybe hold onto it for a just a\
- little while. You never know when you will need a tasty treat!'")
-            player.add_item('sausage')
-            crawler.TextPause.enter_continue()
-            break
-        if ans == 'key':
-            print(f"\n'Take this heavy key {player.name}, I am not sure what door it unlocks but\
- I am sure you will figure it out.'\n")
-            player.add_item('key')
-            crawler.TextPause.enter_continue()
-            break
-        if ans == 'disguise':
-            print(f"\n'Here is a very sneaky disguise {player.name}, it will increase your chance\
- of going unnoticed in crowded situations.'")
-            player.add_item('disguise')
-            crawler.TextPause.enter_continue()
-            break
-        if 'please' in ans and 'sausage' in ans or 'key' in ans or 'disguise' in ans:
-            print(f"\n'You are a very polite person {player.name}! I have a soft spot in my heart\
- for polite people. Please take all of my items and this special\
- [bold yellow]Gold Star![/bold yellow]'")
-            player.add_item('sausage')
-            player.add_item('key')
-            player.add_item('disguise')
-            player.add_item('Gold Star: Manners')
-            crawler.TextPause.enter_continue()
-            break
-        else:
-            print(player.make_sense(),"\n-- Please choose between a\
- 'sausage', a 'key' or a 'disguise'\n")
-            continue
-    except ValueError:
-        print(player.make_sense(),"\n-- Please choose between a\
- 'sausage', a 'key' or a 'disguise'\n")
-        continue        
-print(player.bag)
+    ans = str(input("Please choose between a 'sausage', a 'key' or a 'disguise'? ").lower().strip())
+    if ans == 'sausage':
+        print(f"\n'I had a feeling you would pick the sausage {player.name}, you have a hungry look about you. Please, before throwing it down your gullet, maybe hold onto it for a just a little while. You never know when you will need a tasty treat!'")
+        player.add_item('sausage')
+        crawler.TextPause.enter_continue()
+        break
+    if ans == 'key':
+        print(f"\n'Take this heavy key {player.name}, I am not sure what door it unlocks but I am sure you will figure it out.'\n")
+        player.add_item('key')
+        crawler.TextPause.enter_continue()
+        break
+    if ans == 'disguise':
+        print(f"\n'Here is a very sneaky disguise {player.name}, it will increase your chance of going unnoticed in crowded situations.'")
+        player.add_item('disguise')
+        crawler.TextPause.enter_continue()
+        break
+    if 'please' in ans and 'sausage' in ans or 'key' in ans or 'disguise' in ans:
+        print(f"\n'You are a very polite person {player.name}! I have a soft spot in my heart for polite people. Please take all of my items and this special [bold yellow]Gold Star![/bold yellow]'")
+        player.add_item('sausage')
+        player.add_item('key')
+        player.add_item('disguise')
+        player.add_item('Gold Star: Manners')
+        crawler.TextPause.enter_continue()
+        break
+    else:
+        print(player.make_sense(),"\n-- Please choose between a 'sausage', a 'key' or a 'disguise'\n")
+        continue      
 
 # THIRD ROOM
-print("You leave the merchant and enter a room with a portal hanging in the air.\
- A sign pointing in its direction says 'Step through the portal to find the exit!'\n")
+print("You leave the merchant and enter a room with a portal hanging in the air. A sign pointing in its direction says 'Step through the portal to find the exit!'\n")
 while True:
     enter = input("Do you enter the portal (y/n)? ").lower().strip()
     if enter == 'y':
         print("You step through the portal.... \n")
         break
     if enter == 'n':
-        print("You take one look at this dodgy portal business and decide this is not for you.\
- You turn to leave but slip on a loose pebble, stumbling backwards.... \n")
+        print("You take one look at this dodgy portal business and decide this is not for you. You turn to leave but slip on a loose pebble, stumbling backwards.... \n")
         break
     if enter == "":
         print(player.make_sense())

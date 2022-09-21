@@ -25,22 +25,22 @@ class Character:
         pick_door = random.randint(1,101)
         if pick_door <= 20:
             self.turn_tracker += 1
-            return "** [blue]This door won't open[/blue] **"
+            return "[blue]** This door won't open **[/blue]"
         if 20 < pick_door <= 40:
             self.turn_tracker += 1
-            return "** [blue]This door is locked, you give it a knock... No answer.[/blue] **"
+            return "[blue]** This door is locked, you give it a knock... No answer. **[/blue]"
         if 40 < pick_door <= 60:
             self.turn_tracker += 1
-            return "** [blue]This door is locked tight[/blue] **"
+            return "[blue]** This door is locked tight **[/blue]"
         if 60 < pick_door <= 80:
             self.turn_tracker += 1
-            return "** [blue]This door won't budge[/blue] **"
+            return "[blue]** This door won't budge **[/blue]"
         if 80 < pick_door < 95:
             self.turn_tracker += 1
-            return "** [blue]AGH! This door is just painted on! Beautiful brushwork though.[/blue] **"
+            return "[blue]** AGH! This door is just painted on! Beautiful brushwork though. **[/blue]"
         if pick_door >= 95:
             self.turn_tracker += 1
-            return "** [blue]This door won't budge.. but wait, there's a clue tacked to the door:[/blue] \"The Item Merchant is very generous if you're polite! Thank you for listening\" **"
+            return "[blue]** This door won't budge.. but wait, there's a clue tacked to the door: **[/blue] \"The Item Merchant is very generous if you're polite! Thank you for listening\""
 
     def make_sense(self):
         """USER ENTERING A WRONG VALUE OR TYPE STATEMENT"""
@@ -48,22 +48,22 @@ class Character:
 
         if wrong_statement <= 60:
             self.gibberish += 1
-            return "** [yellow]That doesn't make sense..[/yellow] **"
+            return "[yellow]** That doesn't make sense.. **[/yellow]"
         if 60 < wrong_statement <= 70:
             self.gibberish += 1
-            return "** [yellow]Please stop with the gibberish![/yellow] **"
+            return "[yellow]** Please stop with the gibberish! **[/yellow]"
         if 70 < wrong_statement <= 80:
             self.gibberish += 1
-            return "** [yellow]You must think before you speak[/yellow] **"
+            return "[yellow]** You must think before you speak **[/yellow]"
         if 80 < wrong_statement <= 90:
             self.gibberish += 1
-            return "** [yellow]It seems like you know what you're doing, but this doesn't make sense..[/yellow] **"
+            return "[yellow]** It seems like you know what you're doing, but this doesn't make sense.. **[/yellow]"
         if 90 < wrong_statement < 95:
             self.gibberish += 1        
-            return "** [yellow]Please consider using your head..[/yellow] **"
+            return "[yellow]** Please consider using your head.. **[/yellow]"
         if wrong_statement >= 95:
             self.gibberish += 1        
-            return "** [yellow]If you don't start making sense, I will be forced to have you institutionalised![/yellow] **"
+            return "[yellow]** If you don't start making sense, I will be forced to have you institutionalised! **[/yellow]"
 
     def win_lose(self):
         """WIN/LOSE STATEMENTS WITH PICTURES"""

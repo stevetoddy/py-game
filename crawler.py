@@ -68,11 +68,11 @@ class Character:
     def win_lose(self):
         """WIN/LOSE STATEMENTS WITH PICTURES"""
         if self.win is True:
-            art.tprint("CONGRATULATIONS","tarty1-large")
+            art.tprint("\n\nCONGRATULATIONS","tarty1-large")
             art.tprint(f"{self.name}","tarty1-large")
             print("\n[bold yellow]You made it through unscathed![/bold yellow]\n")
         else:
-            art.tprint(f"BAD LUCK {self.name}","smpoison-large")
+            art.tprint(f"\n\nBAD LUCK {self.name}","smpoison-large")
             if self.ending == "LOCKED DOOR":
                 print("\n[red]You have died miserably staring at the locked door. Better luck next time.[/red]\n")
             elif self.ending == "CANNIBALS":
@@ -82,7 +82,7 @@ class Character:
 
     def credits_win(self):
         """WIN STATE"""
-        print("\n")
+        print("\n\n")
         print("*************************************************************************************************************************")
         print("          _______________ ")
         print("         |@@@@|     |####| ")
@@ -107,7 +107,7 @@ class Character:
 
     def credits_lose(self):
         """LOSE STATE"""
-        print("\n")
+        print("\n\n")
         print("*************************************************************************************************************************")
         print("        _                   _ ")
         print(f"      _( )                 ( )_        It took you {self.turn_tracker} guesses to get through the first room")

@@ -128,3 +128,47 @@ This test is to show my add_item() method works as intended. In this test I give
 # LINK TO TRELLO BOARD 
 
 - [Terminal Application Trello Board](https://trello.com/c/UwDrglhj/22-documentation)
+
+--- 
+
+# IMPLEMENTATION PLAN
+
+I have my Trello board as my main point of design implementation, and I will give an overview of the design implementation here.  
+
+## Brainstorming  
+
+Initially the idea was to create a dungeon crawler with many items that would effect the outcome of certain encounters. After attempting to start this idea, I noticed that moving in and out of areas was not possible in the time frame given and my skill to that point. I reused some ideas and settled on the escape room idea, having a series of puzzle like rooms. I kept an element of the items idea with the Item Merchant and the third room, where items effect the outcome of the encounter. 
+
+## Initial To Do List
+
+All checklists and detailed design plans related to the implementation plan are located on the Trello board [here](https://trello.com/c/UwDrglhj/22-documentation).
+
+- Start Trello board
+- Write out this implementation plan
+- Start Github repository
+- Write bones of idea into code to make sure it is viable
+- Flesh out code with a bit of story
+- Work on first feature, response generators
+- Look for modules to make the application look nicer
+- Implement modules to make application look nicer in the form of a starting splash screen, highlighted colour text for emphasis, pictures of end encounters, pictures of winning and losing
+- Make a text break so the user can 'press enter to continue'
+- Screen clearing option
+- Time delay options to give the application pacing
+- Flesh out main puzzles
+  - First room
+  - Second room
+  - Third room
+  - Ending board (win and lose) with run stats
+- Write tests for features
+- Bash script with command line args
+  - launch virtual environment
+  - install required python packages
+  - launch game
+  - give user option to give their name as a command line argument
+- Make walkthrough video 
+  - needs slide deck 
+  - talk about features in game and code
+  - show a run through of game if time 
+  - upload and link
+- QA testing throughout the application before submission
+  

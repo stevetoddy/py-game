@@ -1,4 +1,4 @@
-# INSTALL INSTRUCTIONS
+# INSTALLATION INSTRUCTIONS
 
 This is an Escape Room Game terminal application to be played in the Linux terminal, that runs on Python3. 
 
@@ -14,7 +14,13 @@ You will need Python3 installed to run this application. If you are unfamiliar w
 
 Open a terminal and navigate into a directory you would like the application to be.
 
-Use the code snippet below in your terminal to retrieve the application directory from my git repository.
+Please check you have virtualenv installed, this will be required if you do not want the python packages this application requires to be installed globally on your system.  
+
+If you are unsure if you have virtualenv installed, please refer to the documentation below.
+
+[Virtual Environment Installation](https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv)
+
+One you have confirmed you have virtualenv installed, use the code snippet below in your terminal to retrieve the application directory from my git repository.
 
 ```
 git clone https://github.com/stevetoddy/py-game.git
@@ -58,11 +64,41 @@ Enjoy the game!
 
 ---
 
-Dependencies required 
+# DEPENDENCIES REQUIRED  
 
-System/ Hardware requirements 
+- Windows, macOS, Ubuntu or another modern OS
+- Python 3.7 or later
+- Virtualenv 20.0 or later
 
-Features of App
+---
+
+# SYSTEM REQUIREMENTS  
+
+- If you are able to run a modern OS, you will be able to run this terminal application.  
+
+---
+
+# STYLE GUIDE
+
+- [PEP 8](https://peps.python.org/pep-0008/)
+
+---
+
+# FEATURES
+
+- You may enter you name when launching the application by placing you name after the command shown earlier to run. This is detailed in the above section titled Installation Instructions.  
+
+- The first room will have you try and guess the correct door to go through. The correct door is randomly generated each new game. If the player chooses the incorrect door they will get a randomly generated message telling them the bad news. If the player enters a door number out of the range of the set amount of doors, they will receive a randomly selected message advising them they need to enter a number in the correct range and some flavour text telling them to make sense. There is a secret message that has a low chance of displaying when the player selects a wrong door.  
+
+- The two response generators both work in a similar fashion. One is to give a response when the player selects the wrong door in the first room. There are 5 possible responses, with the most generic one having a higher chance of being displayed than the others. There is one message that has a low chance of being displayed and has a clue for the player about the next room. The second response generator will return a line asking the player to 'please make sense', in a few different ways. Again, the most generic responses have a higher chance of being displayed. Every time either of these messages are displayed, they are noted in the player instance so we can give the player a readout of the amount of guesses taken to get through the first room, and also how many time the application asked the player to 'make sense'.
+
+- In the second room you meet the Item Merchant, they have 3 items you can choose from and each will help you get past a different ending encounter, which I will cover in more detail in the next feature below. The Item Merchant has a secret too, if you ask nicely for an item, they will give you all of the item and the secret Gold Star.  
+
+- The final room will have you face one of three possible endings, a locked door, a room full of cannibals or a monster. These encounters are randomly chosen, all with even weighting. If you picked the key in the previous room, you will have a one in two chance of getting past the locked door, but if you didn't choose the key, you will have a one in forty-two chance of getting past the locked door. If you do not get past the encounter, you lose the game. If you chose the sausage, you will have the increase against the monster. If you pick the disguise, you will have the increased chance against the room of cannibals. After you either win or lose, you will be show a win or lose statement that relates to the encounter you faced.  
+
+- Upon winning oir losing, the player will be given either the winners stats board or the loser stats board. Both display the same stats but the winners board have a medal that says you won, the losers board has a skull and cross bones in the medals place. Both boards display how many guesses it took the player to get through the first room, which items they chose, if they found the gold star, which ending they encountered and how many nonsense statements they made throughout the run.  
+
+- I have a screen clearing, text break that breaks up the story. It has an inbuilt clearing function that clears the terminal screen, a sleep timer to give the application a cadence and a 'hit enter to continue' function. 
 
 ---
 
@@ -81,3 +117,14 @@ I have created a list called 'options_make_sense' and it is is populated with al
 ### 3rd Test – Test add_item()  
 This test is to show my add_item() method works as intended. In this test I give the method add_items() an 'item' called "TEST_ITEM" and then assert that "TEST_ITEM" was added to the list called 'bag' in the player instance.  
 
+---
+
+# LINK TO GITHUB REPOSITORY
+
+- [Github Repository](https://github.com/stevetoddy/py-game/tree/main)
+
+---
+
+# LINK TO TRELLO BOARD 
+
+- [Terminal Application Trello Board](https://trello.com/c/UwDrglhj/22-documentation)

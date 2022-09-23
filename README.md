@@ -22,7 +22,7 @@ If you are unsure if you have virtualenv installed, please refer to the document
 
 One you have confirmed you have virtualenv installed, use the code snippet below in your terminal to retrieve the application directory from my git repository.
 
-```
+```https://pypi.org/project/clearing/
 git clone https://github.com/stevetoddy/py-game.git
 ```
 
@@ -171,4 +171,21 @@ All checklists and detailed design plans related to the implementation plan are 
   - show a run through of game if time 
   - upload and link
 - QA testing throughout the application before submission
-  
+
+---
+
+# REFERENCES
+
+Ascii Art was sourced from the following resources:
+Unknown Artist - https://ascii.co.uk/art/skulls
+Joan G. Stark - https://www.asciiart.eu/miscellaneous/awards 
+Joan G. Stark - https://ascii.co.uk/art/cauldron
+b'ger - https://ascii.co.uk/art/cerberus
+ejm - https://ascii.co.uk/art/doors
+
+Python packages were sourced from the following resources:
+clearing - https://pypi.org/project/clearing/
+rich - https://pypi.org/project/rich/
+art - https://pypi.org/project/art/
+
+All other packages are builtin or created by Stevan Todorovic. 

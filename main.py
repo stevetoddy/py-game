@@ -49,7 +49,6 @@ pause_continue.TextPause.enter_continue()
 #FIRST ROOM GUESSING GAME
 door_number = random.randint(1,20)
 while True:
-    print(door_number)
     try:
         ans = int(input("\n\nWhich door do you want to try? Pick a number between 1 and 20 to choose: "))
         if ans == door_number:
@@ -149,6 +148,7 @@ time.sleep(3)
 print("You hit the ground with a thud.\n")
 
 pause_continue.TextPause.enter_continue()
+
 
 #FINAL ROOM DECIDER
 final_roll = random.randint(1,3)

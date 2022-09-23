@@ -1,7 +1,5 @@
 import random
-import time
-import clearing
-from rich import print
+from rich import print  # THIS IMPORT WILL OVERRIDE THE BUILTIN PRINT FUNCTION
 import art
 
 

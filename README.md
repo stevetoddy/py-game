@@ -1,6 +1,7 @@
-# INSTALLATION INSTRUCTIONS
+# README
+## INSTALLATION INSTRUCTIONS
 
-This is an Escape Room Game terminal application to be played in the Linux terminal, that runs on Python3. 
+This is an Escape Room Game terminal application to be played in the Linux terminal, that runs on Python3.  
 
 If you are unfamiliar with the terminal, please refer to the relevant documentation below:
 
@@ -8,7 +9,7 @@ If you are unfamiliar with the terminal, please refer to the relevant documentat
 - [Linux](https://help.ubuntu.com/community/UsingTheTerminal)
 - [Windows](https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.2&viewFallbackFrom=powershell-7.1)
 
-You will need Python3 installed to run this application. If you are unfamiliar with Python, please refer to the documentation below. 
+You will need Python3 installed to run this application. If you are unfamiliar with Python, please refer to the documentation below.  
 
 - [How to install Python](http://wsvincent.com/install-python/)
 
@@ -43,7 +44,7 @@ source escape_room.sh name
 
 Replacing name with the name you would like in game.
 
-For example: 
+For example:  
 
 ```
 source escape_room.sh Steve
@@ -64,7 +65,7 @@ Enjoy the game!
 
 ---
 
-# DEPENDENCIES REQUIRED  
+## DEPENDENCIES REQUIRED
 
 - Windows, macOS, Ubuntu or another modern OS
 - Python 3.7 or later
@@ -72,19 +73,19 @@ Enjoy the game!
 
 ---
 
-# SYSTEM REQUIREMENTS  
+## SYSTEM REQUIREMENTS
 
 - If you are able to run a modern OS, you will be able to run this terminal application.  
 
 ---
 
-# STYLE GUIDE
+## STYLE GUIDE
 
 - [PEP 8](https://peps.python.org/pep-0008/)
 
 ---
 
-# FEATURES
+## FEATURES
 
 - You may enter you name when launching the application by placing you name after the command shown earlier to run. This is detailed in the above section titled Installation Instructions.  
 
@@ -102,7 +103,7 @@ Enjoy the game!
 
 ---
 
-# TESTS
+## TESTS
 
 ### 1st Test – Test dead_end()  
 This test is to show my dead_end() method works as intended. The dead_end() method was created to give a random response to the player while guessing doors in the first room. If the player guesses the wrong door, in the acceptable range (1-20) the dead_end() method will give the player back a randomly picked response from a list of five possible responses.  
@@ -119,19 +120,19 @@ This test is to show my add_item() method works as intended. In this test I give
 
 ---
 
-# LINK TO GITHUB REPOSITORY
+## LINK TO GITHUB REPOSITORY
 
 - [Github Repository](https://github.com/stevetoddy/py-game/tree/main)
 
 ---
 
-# LINK TO TRELLO BOARD 
+## LINK TO TRELLO BOARD 
 
 - [Terminal Application Trello Board](https://trello.com/c/UwDrglhj/22-documentation)
 
---- 
+---  
 
-# IMPLEMENTATION PLAN
+## IMPLEMENTATION PLAN
 
 I have my Trello board as my main point of design implementation, and I will give an overview of the design implementation here.  
 
@@ -174,18 +175,18 @@ All checklists and detailed design plans related to the implementation plan are 
 
 ---
 
-# REFERENCES
+## REFERENCES
 
-Ascii Art was sourced from the following resources:
-Unknown Artist - https://ascii.co.uk/art/skulls
-Joan G. Stark - https://www.asciiart.eu/miscellaneous/awards 
-Joan G. Stark - https://ascii.co.uk/art/cauldron
-b'ger - https://ascii.co.uk/art/cerberus
-ejm - https://ascii.co.uk/art/doors
+Ascii Art was sourced from the following resources:  
+Unknown Artist - https://ascii.co.uk/art/skulls  
+Joan G. Stark - https://www.asciiart.eu/miscellaneous/awards  
+Joan G. Stark - https://ascii.co.uk/art/cauldron  
+b'ger - https://ascii.co.uk/art/cerberus  
+ejm - https://ascii.co.uk/art/doors  
 
-Python packages were sourced from the following resources:
-clearing - https://pypi.org/project/clearing/
-rich - https://pypi.org/project/rich/
-art - https://pypi.org/project/art/
+Python packages were sourced from the following resources:  
+clearing - https://pypi.org/project/clearing/  
+rich - https://pypi.org/project/rich/  
+art - https://pypi.org/project/art/  
 
 All other packages are builtin or created by Stevan Todorovic. 

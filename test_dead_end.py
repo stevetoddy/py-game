@@ -1,9 +1,10 @@
 import crawler
+
+# pylint: disable=line-too-long
+
 player = crawler.Character(name="test_player")
 
-# Test to show dead_end() method works as intended. List 'options_dead_end' is populated
-# with all possible results from dead_end() and when method is called, the result is checked
-# against this list
+# List of responses for the dead end responses test
 options_dead_end = [
     "[blue]** This door won't open **[/blue]",
     "[blue]** This door is locked, you give it a knock... No answer. **[/blue]",
@@ -12,14 +13,7 @@ options_dead_end = [
     "[blue]** This door won't budge.. but wait, there's a clue tacked to the door: **[/blue] \"The Item Merchant is very generous if you're polite! Thank you for listening\""
     ]
 
-class TestDeadEnd:
-    ''''TEST FOR DEAD END RESPONSE'''
-    def test_dead_end(self):
-        assert player.dead_end() in options_dead_end
-
-# Test to show make_sense() method works as intended. List 'options_make_sense' is populated
-# with all possible results from make_sense() and when method is called, the result is checked
-# against this list
+# List of responses for the make sense responses test
 options_make_sense = [
     "[yellow]** That doesn't make sense.. **[/yellow]",
     "[yellow]** Please stop with the gibberish! **[/yellow]",
@@ -29,9 +23,28 @@ options_make_sense = [
     "[yellow]** If you don't start making sense, I will be forced to have you institutionalised! **[/yellow]"
     ]
 
-class TestMakeSense:
-    ''''TEST FOR NONSENSE RESPONSE'''
+
+
+class TestResponses:
+    ''''
+    CLASS FOR RESPONSE GENERATORS TESTS
+    '''
+    # Test to show dead_end() method works as intended. List 'options_dead_end' is populated
+    # with all possible results from dead_end() and when method is called, the result is checked
+    # against this list
+    def test_dead_end(self):
+        ''''
+        TEST FOR DEAD END RESPONSE
+        '''
+        assert player.dead_end() in options_dead_end
+
+    # Test to show make_sense() method works as intended. List 'options_make_sense' is populated
+    # with all possible results from make_sense() and when method is called, the result is checked
+    # against this list
     def test_make_sense(self):
+        ''''
+        TEST FOR NONSENSE RESPONSE
+        '''
         assert player.make_sense() in options_make_sense
 
 
@@ -39,7 +52,12 @@ class TestMakeSense:
 # Test to show add_item() method works as intended. Passing a test item
 # to add_item and checking if the item was added to the list bag in the player instance.
 class TestBagAdd:
-    ''''TEST FOR ADDING ITEM TO BAG'''
+    ''''
+    CLASS FOR ADD TEST
+    '''
     def test_add_item(self):
+        '''
+        ADD ITEM TEST
+        '''
         player.add_item("TEST_ITEM")
         assert "TEST_ITEM" in player.bag

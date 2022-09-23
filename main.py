@@ -1,10 +1,17 @@
-import art
-from rich import print
-import crawler
 import random
 import time
-import clearing
 from sys import argv
+import clearing
+import art
+from rich import print  # THIS IMPORT WILL OVERRIDE THE BUILTIN PRINT FUNCTION
+import pause_continue
+import crawler
+
+
+# TELLING PYLINT TO IGNORE LONG LINE AS THEY ARE ALL OUTPUT
+# & TO IGNORE ANOMALOUS BACKSLASHES FROM THE ASCII ART
+# pylint: disable=anomalous-backslash-in-string
+# pylint: disable=line-too-long
 
 clearing.clear()
 
@@ -12,33 +19,32 @@ clearing.clear()
 art.tprint("\n\nESCAPE  ROOM","tarty1-large")
 print("[bold magenta]By Stevan Todorovic[/bold magenta]")
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #NAME INPUT
 if len(argv) <= 1:
     while True:
-        name = (input("\n\nHello Contestant! Just before we start, what is your name? "))
-        if name == "":
+        NAME = (input("\n\nHello Contestant! Just before we start, what is your name? "))
+        if NAME == "":
             print ("[red]Please enter your name[/red]")
             continue
-        else: 
-            player = crawler.Character(name)
-            print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
-            break
+        player = crawler.Character(NAME)
+        print(f"\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
+        break
 else:   #IF NAME IS GIVEN AS ARGUMENT THEN GAME WILL SKIP ASKING THE PLAYER
-    name = argv[1]
-    player = crawler.Character(name)
+    NAME = argv[1]
+    player = crawler.Character(NAME)
     print(f"\n\nWelcome {player.name}!\n\nYou are about to enter the worlds smallest [bold green]ESCAPE ROOM![/bold green].")
 
 print("\n[bold yellow]Let's begin![/bold yellow]")
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #FIRST ROOM WELCOME
 print("\n\nYou enter the first room to find yourself confront with 20 numbered doors, they all look the same.")
 print("A notice on the wall advises you, [yellow]'This room is EASY, just find the unlocked door to proceed!'[/yellow]")
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #FIRST ROOM GUESSING GAME
 door_number = random.randint(1,20)
@@ -51,17 +57,17 @@ while True:
             print("\n[bold green]You push against the door and it slowly gives way, you have found the correct door![/bold green]\n")
             time.sleep(1.5)
             break
-        elif ans in range(1,21) and ans != door_number:
+        if ans in range(1,21) and ans != door_number:
             print(player.dead_end(),'\n')
             continue
-        else:
-            print(player.make_sense(),"\n[red]-- Enter a number between 1 and 20 --[/red]\n")
-            continue
+        print(player.make_sense(),"\n[red]-- Enter a number between 1 and 20 --[/red]\n")
+        continue
+
     except ValueError:
         print(player.make_sense(),"\n[red]-- You must pick a NUMBER between 1 and 20 --[/red]\n")
         continue
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #FIRST ROOM COMPLETION SCREEN
 print(f"\n\nWell done {player.name}! It only took you {player.turn_tracker} (sensible) guesses to find the right door!")
@@ -71,13 +77,13 @@ time.sleep(1)
 if player.gibberish > 0:
     print(f"\nI won't make a big deal of the {player.gibberish} nonsensical statements you uttered, but next time keep them to yourself please.")
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #SECOND ROOM WELCOME
 print(f"\n\nOK then, that was pretty easy right {player.name}? Well this next room is even easier!")
 print("All you have to do is get an item from the Item Merchant over there, go and see what he has!\n")
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 print(f"\n\nYou trundle over to the Item Merchant and greet them \n'Hello Item Merchant! I am {player.name}, guesser of doors and future item haver!'\n")
 
@@ -86,37 +92,36 @@ time.sleep(1.5)
 print(f"'Hello {player.name}, those are some strange and presumptuous titles you have there.'")
 print("\n'I am the Item Merchant and as you might have guessed, I have items. You may pick one to take with you on your adventures'\n")
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #SECOND ROOM ITEM PICKER
 while True:
-    ans = str(input("\n\nPlease choose between a 'sausage', a 'key' or a 'disguise'? ").lower().strip())
-    if ans == 'sausage':
+    ANS = str(input("\n\nPlease choose between a 'sausage', a 'key' or a 'disguise'? ").lower().strip())
+    if ANS == 'sausage':
         print(f"\n'I had a feeling you would pick the sausage {player.name}, you have a hungry look about you. Please, before throwing it down your gullet, maybe hold onto it for a just a little while. You never know when you will need a tasty treat!'")
         player.add_item('sausage')
-        crawler.TextPause.enter_continue()
+        pause_continue.TextPause.enter_continue()
         break
-    if ans == 'key':
+    if ANS == 'key':
         print(f"\n'Take this heavy key {player.name}, I am not sure what door it unlocks but I am sure you will figure it out.'\n")
         player.add_item('key')
-        crawler.TextPause.enter_continue()
+        pause_continue.TextPause.enter_continue()
         break
-    if ans == 'disguise':
+    if ANS == 'disguise':
         print(f"\n'Here is a very sneaky disguise {player.name}, it will increase your chance of going unnoticed in crowded situations.'")
         player.add_item('disguise')
-        crawler.TextPause.enter_continue()
+        pause_continue.TextPause.enter_continue()
         break
-    if 'please' in ans and 'sausage' in ans or 'key' in ans or 'disguise' in ans:
+    if 'please' in ANS and 'sausage' in ANS or 'key' in ANS or 'disguise' in ANS:
         print(f"\n'You are a very polite person {player.name}! I have a soft spot in my heart for polite people. Please take all of my items and this special [bold yellow]Gold Star![/bold yellow]'")
         player.add_item('sausage')
         player.add_item('key')
         player.add_item('disguise')
         player.add_item('Gold Star: Manners')
-        crawler.TextPause.enter_continue()
+        pause_continue.TextPause.enter_continue()
         break
-    else:
-        print(player.make_sense(),"\n-- Please choose between a 'sausage', a 'key' or a 'disguise'\n")
-        continue      
+    print(player.make_sense(),"\n-- Please choose between a 'sausage', a 'key' or a 'disguise'\n")
+    continue
 
 #THIRD ROOM PORTAL CHOICE
 print("\n\nYou leave the merchant and enter a room with a portal hanging in the air. A sign pointing in its direction says 'Step through the portal to find the exit!'\n")
@@ -131,9 +136,8 @@ while True:
     if enter == "":
         print(player.make_sense())
         continue
-    else:
-        print(player.make_sense(),"\n-- Please choose between 'y' for Yes or 'n' for NO\n")
-        continue
+    print(player.make_sense(),"\n-- Please choose between 'y' for Yes or 'n' for NO\n")
+    continue
 
 #PORTAL FALL
 time.sleep(3)
@@ -144,7 +148,7 @@ time.sleep(3)
 
 print("You hit the ground with a thud.\n")
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #FINAL ROOM DECIDER
 final_roll = random.randint(1,3)
@@ -169,20 +173,20 @@ if final_roll == 1:
     print("              | |           | |")
     print("              | |           | |")
     print("              |_|___________|_|")
-    crawler.TextPause.enter_continue()
-    
+    pause_continue.TextPause.enter_continue()
+
     #WITH ITEM
     if 'key' in player.bag:
         print("\n\nYou remember the key in your bag!")
-   
-        crawler.TextPause.enter_continue()
+
+        pause_continue.TextPause.enter_continue()
 
         #WITH ITEM WIN
         if random.randint(41,42) == LUCK:
             print("\n\nYou're key unlocks the door! You win!")
             player.win = True
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
         #WITH ITEM LOSE
         else:
@@ -191,8 +195,8 @@ if final_roll == 1:
             print("\nThe door is locked tight and the portal is no where to be seen. Better get comfortable, it seems this little room will be you home for a while.")
             print("\n\n[bold red]HOW UNLUCKY![/bold red]")
 
-            crawler.TextPause.enter_continue()
-    
+            pause_continue.TextPause.enter_continue()
+
     #WITHOUT ITEM
     else:
         #WITHOUT ITEM WIN
@@ -201,13 +205,13 @@ if final_roll == 1:
             print("\n\n[bold green]HOW LUCKY![/bold green]")
             player.win = True
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
         #WITHOUT ITEM LOSE
         else:
             print("\n\nThe door is locked tight and the portal is no where to be seen. Better get comfortable, it seems this little room will be you home for a while.")
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
 # CANNIBALS ENDING
 elif final_roll == 2:
@@ -226,20 +230,20 @@ elif final_roll == 2:
     print("                 .'` .'```'. `-. ")
     print("                ().'`       `'.() ")
 
-    crawler.TextPause.enter_continue()
+    pause_continue.TextPause.enter_continue()
 
     #WITH ITEM
     if 'disguise' in player.bag:
         print("\n\nYou remember the disguise in your bag!")
 
-        crawler.TextPause.enter_continue()
+        pause_continue.TextPause.enter_continue()
 
         #WITH ITEM WIN
         if random.randint(41,42) == LUCK:
             print("\n\nYou are able to slip past the cannibals and make it outside! You win!")
             player.win = True
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
         #WITH ITEM LOSE
         else:
@@ -247,8 +251,8 @@ elif final_roll == 2:
             print("The cannibals throw you in a pot and start talking excitedly about herbs and spices.")
             print("\n\n[bold red]HOW UNLUCKY![/bold red]")
 
-            crawler.TextPause.enter_continue()
-    
+            pause_continue.TextPause.enter_continue()
+
     #WITHOUT ITEM
     else:
         #WITHOUT ITEM WIN
@@ -257,13 +261,13 @@ elif final_roll == 2:
             print("\n\n[bold green]HOW LUCKY![/bold green]")
             player.win = True
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
         #WITHOUT ITEM LOSE
         else:
             print("\n\nThe cannibals spot you immediately and start to salivating like Pavlov's dogs. As an avid cook, you can't help but be happy that you will make one last meal!")
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
 # CERBERUS ENDING
 else:
@@ -282,13 +286,13 @@ else:
     print("             _/ _)   \   \__/   (_")
     print("            (,-(,(,(,/      \,),),)")
 
-    crawler.TextPause.enter_continue()
+    pause_continue.TextPause.enter_continue()
 
     #WITH ITEM
     if 'sausage' in player.bag:
         print("\n\nYou remember the sausage in your bag!")
 
-        crawler.TextPause.enter_continue()
+        pause_continue.TextPause.enter_continue()
 
         #WITH ITEM WIN
         if random.randint(41,42) == LUCK:
@@ -296,7 +300,7 @@ else:
             print("Turns out Cerberus loves snags and is now your friend. You win!\n")
             player.win = True
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
         #WITH ITEM LOSE
         else:
@@ -304,7 +308,7 @@ else:
             print("You had not noticed but it turns out it was a lamb and rosemary sausage, and Cerberus hates lamb even more than he hates rosemary. You are eaten instead.")
             print("\n\n[bold red]HOW UNLUCKY![/bold red]")
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
     #WITHOUT ITEM
     else:
@@ -315,19 +319,19 @@ else:
             print("\n\n[bold green]HOW LUCKY![/bold green]")
             player.win = True
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
         #WITHOUT ITEM LOSE
         else:
             print("\n\nWithout a moments pause, the closest of Cerberus\'s terrible heads snaps in your direction and takes a mouthful of you.\n")
             print("Unfortunately it included some important parts that make up 'you', and you fall over dead.")
 
-            crawler.TextPause.enter_continue()
+            pause_continue.TextPause.enter_continue()
 
 # WIN OR LOSE CREDITS
 player.win_lose()
 
-crawler.TextPause.enter_continue()
+pause_continue.TextPause.enter_continue()
 
 #GOLD STAR CHECK
 if "Gold Star: Manners" in player.bag:

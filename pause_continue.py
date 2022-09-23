@@ -1,5 +1,6 @@
 import time
 import clearing
+from rich import print
 
 class TextPause:
     """
